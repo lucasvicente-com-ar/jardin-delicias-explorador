@@ -1,5 +1,9 @@
 const artUrl =
-  "https://commons.wikimedia.org/wiki/Special:Redirect/file/The_Garden_of_Earthly_Delights_by_Bosch_High_Resolution.jpg?width=6000";
+  "https://upload.wikimedia.org/wikipedia/commons/6/62/The_Garden_of_Earthly_Delights_by_Bosch_High_Resolution_2.jpg";
+const imageSize = {
+  width: 19569,
+  height: 11035,
+};
 
 const points = [
   {
@@ -144,7 +148,7 @@ function renderHotspots() {
 
     viewer.addOverlay({
       element: button,
-      location: new OpenSeadragon.Point(point.x / 100, (point.y / 100) * (17078 / 30000)),
+      location: new OpenSeadragon.Point(point.x / 100, (point.y / 100) * (imageSize.height / imageSize.width)),
       placement: OpenSeadragon.Placement.CENTER,
     });
   });
