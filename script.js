@@ -11,7 +11,6 @@ const points = [
     title: "La fuente de la vida",
     subtitle: "Arquitectura organica y mineral",
     text: "La estructura rosada se alza en el centro del Paraiso. Su forma combina lo vegetal, lo petreo y lo fantastico; debajo aparece una lechuza, animal de lectura ambivalente en la epoca.",
-    certainty: "Interpretacion",
   },
   {
     id: 2,
@@ -22,7 +21,6 @@ const points = [
     title: "Animales reales e imaginarios",
     subtitle: "Un mundo antes de la caida",
     text: "El Bosco reune especies conocidas en Europa con animales exoticos y criaturas inventadas. La convivencia no es completamente pacifica: ya hay depredacion y tension.",
-    certainty: "Documentado",
   },
   {
     id: 3,
@@ -33,7 +31,6 @@ const points = [
     title: "La cabalgata circular",
     subtitle: "Deseo, repeticion y movimiento",
     text: "Jinetes sobre animales reales y fabulosos giran alrededor de un estanque de mujeres. La circularidad puede sugerir deseo reiterado, inestabilidad y falta de direccion moral.",
-    certainty: "Interpretacion",
   },
   {
     id: 4,
@@ -44,7 +41,6 @@ const points = [
     title: "Frutos gigantes",
     subtitle: "Placer intenso y fugaz",
     text: "Fresas, cerezas y otros frutos aparecen fuera de escala. En interpretaciones tradicionales aluden al placer sensual: atractivo, dulce y rapidamente perecedero.",
-    certainty: "Interpretacion",
   },
   {
     id: 5,
@@ -55,7 +51,6 @@ const points = [
     title: "Aves desmesuradas",
     subtitle: "La inversion del orden natural",
     text: "Aves enormes alimentan, transportan o rodean a los seres humanos. El cambio de escala borra las jerarquias habituales y vuelve inestable el mundo visible.",
-    certainty: "Documentado",
   },
   {
     id: 6,
@@ -66,7 +61,6 @@ const points = [
     title: "El infierno musical",
     subtitle: "Instrumentos convertidos en tormento",
     text: "Arpa, laud, zanfona y otros instrumentos dejan de producir armonia y se transforman en maquinas de castigo. Una partitura aparece escrita sobre el cuerpo de un condenado.",
-    certainty: "Documentado",
   },
   {
     id: 7,
@@ -77,7 +71,6 @@ const points = [
     title: "El hombre-arbol",
     subtitle: "Identidad, fragilidad y castigo",
     text: "La figura hueca mira al espectador mientras sostiene una escena de taberna. Es una de las invenciones mas reconocibles del triptico y su significado exacto sigue abierto.",
-    certainty: "Interpretacion",
   },
   {
     id: 8,
@@ -88,7 +81,6 @@ const points = [
     title: "El monstruo devorador",
     subtitle: "La degradacion final",
     text: "Una criatura con cabeza de ave ingiere cuerpos y los expulsa a un pozo. La escena enlaza gula, avaricia y humillacion corporal dentro del sistema de castigos.",
-    certainty: "Interpretacion",
   },
 ];
 
@@ -163,12 +155,6 @@ function openDetail(point) {
     <h2>${point.title}</h2>
     <h3>${point.subtitle}</h3>
     <p class="description">${point.text}</p>
-    <div class="certainty">
-      <span>${point.certainty}</span>
-      <p>${point.certainty === "Documentado"
-        ? "Elemento visible y descrito por fuentes museisticas."
-        : "Lectura posible; no existe una interpretacion definitiva."}</p>
-    </div>
     <div class="pager">
       <button type="button" data-prev>&lt;- Anterior</button>
       <button type="button" data-next>Siguiente -&gt;</button>

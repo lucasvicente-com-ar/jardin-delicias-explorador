@@ -446,33 +446,10 @@ button {
   color: #d2c8b4;
 }
 
-.certainty {
-  margin: 30px 0;
-  border-top: 1px solid #3c352a;
-  border-bottom: 1px solid #3c352a;
-  padding: 18px 0;
-  display: grid;
-  grid-template-columns: 110px 1fr;
-  gap: 12px;
-}
-
-.certainty span {
-  color: #d8bc7c;
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: .12em;
-}
-
-.certainty p {
-  margin: 0;
-  font-size: 11px;
-  line-height: 1.5;
-  color: #8f8677;
-}
-
 .pager {
   display: flex;
   justify-content: space-between;
+  margin-top: 30px;
 }
 
 .pager button {
