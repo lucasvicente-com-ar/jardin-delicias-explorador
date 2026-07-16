@@ -520,7 +520,7 @@ footer {
 
 .reading-guide p,
 .reading-guide li {
-  font: 18px/1.75 Georgia, "Times New Roman", serif;
+  font: 16px/1.75 Arial, Helvetica, sans-serif;
   color: #d2c8b4;
 }
 
@@ -623,7 +623,7 @@ footer {
 
   .reading-guide p,
   .reading-guide li {
-    font-size: 16px;
+    font-size: 15px;
   }
 
   .reading-guide h3 {
