@@ -1,5 +1,5 @@
 const artUrl =
-  "https://commons.wikimedia.org/wiki/Special:Redirect/file/The_Garden_of_Earthly_Delights_by_Bosch_High_Resolution.jpg?width=2560";
+  "https://commons.wikimedia.org/wiki/Special:Redirect/file/The_Garden_of_Earthly_Delights_by_Bosch_High_Resolution.jpg?width=6000";
 
 const points = [
   {
@@ -96,16 +96,14 @@ const categoryIcons = {
 let started = false;
 let category = "Todos";
 let selectedPoint = null;
+let viewer = null;
 
-const stage = document.querySelector("[data-stage]");
-const lens = document.querySelector("[data-lens]");
+const viewerElement = document.querySelector("[data-viewer]");
 const hotspots = document.querySelector("[data-hotspots]");
 const panelNotes = document.querySelector("[data-panel-notes]");
 const categoriesNav = document.querySelector("[data-categories]");
 const detail = document.querySelector("[data-detail]");
 const helpModal = document.querySelector("[data-help-modal]");
-
-lens.style.backgroundImage = `url("${artUrl}")`;
 
 function visiblePoints() {
   return points.filter((point) => category === "Todos" || point.category === category);
@@ -127,22 +125,29 @@ function renderCategories() {
     .join("");
 }
 
+function clearHotspots() {
+  hotspots.innerHTML = "";
+  viewer?.clearOverlays();
+}
+
 function renderHotspots() {
-  hotspots.innerHTML = started
-    ? visiblePoints()
-        .map(
-          (point) => `
-            <button
-              class="hotspot"
-              type="button"
-              style="left:${point.x}%;top:${point.y}%"
-              aria-label="Abrir: ${point.title}"
-              data-point="${point.id}"
-            ><span>${point.id}</span></button>
-          `,
-        )
-        .join("")
-    : "";
+  clearHotspots();
+  if (!started || !viewer || !viewer.world.getItemCount()) return;
+
+  visiblePoints().forEach((point) => {
+    const button = document.createElement("button");
+    button.className = "hotspot";
+    button.type = "button";
+    button.dataset.point = point.id;
+    button.setAttribute("aria-label", `Abrir: ${point.title}`);
+    button.innerHTML = `<span>${point.id}</span>`;
+
+    viewer.addOverlay({
+      element: button,
+      location: new OpenSeadragon.Point(point.x / 100, (point.y / 100) * (17078 / 30000)),
+      placement: OpenSeadragon.Placement.CENTER,
+    });
+  });
 }
 
 function openDetail(point) {
@@ -183,23 +188,43 @@ function resetExperience() {
   });
   closeDetail();
   renderCategories();
-  renderHotspots();
+  clearHotspots();
+  viewer?.viewport.goHome(true);
 }
 
-stage.addEventListener("mousemove", (event) => {
-  const rect = stage.getBoundingClientRect();
-  const x = ((event.clientX - rect.left) / rect.width) * 100;
-  const y = ((event.clientY - rect.top) / rect.height) * 100;
+function initViewer() {
+  if (!window.OpenSeadragon) {
+    viewerElement.innerHTML = `<img class="painting" src="${artUrl}" alt="El jardín de las delicias, tríptico de El Bosco">`;
+    return;
+  }
 
-  lens.style.left = `${x}%`;
-  lens.style.top = `${y}%`;
-  lens.style.backgroundPosition = `${x}% ${y}%`;
-  lens.classList.toggle("visible", started && !selectedPoint);
-});
+  viewer = OpenSeadragon({
+    id: "painting-viewer",
+    prefixUrl: "https://cdn.jsdelivr.net/npm/openseadragon@6.0.2/build/openseadragon/images/",
+    tileSources: {
+      type: "image",
+      url: artUrl,
+      buildPyramid: true,
+    },
+    showNavigator: true,
+    showRotationControl: false,
+    animationTime: 0.45,
+    blendTime: 0.12,
+    constrainDuringPan: true,
+    visibilityRatio: 0.85,
+    minZoomLevel: 0.9,
+    maxZoomPixelRatio: 2,
+    gestureSettingsMouse: {
+      clickToZoom: false,
+      dblClickToZoom: true,
+    },
+  });
 
-stage.addEventListener("mouseleave", () => {
-  lens.classList.remove("visible");
-});
+  viewer.addHandler("open", () => {
+    viewer.viewport.goHome(true);
+    renderHotspots();
+  });
+}
 
 document.addEventListener("click", (event) => {
   const target = event.target.closest("button, a");
@@ -243,4 +268,4 @@ helpModal.addEventListener("click", (event) => {
 });
 
 renderCategories();
-renderHotspots();
+initViewer();

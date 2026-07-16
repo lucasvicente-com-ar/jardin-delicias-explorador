@@ -103,7 +103,20 @@ button {
   overflow: hidden;
   border: 1px solid rgba(184, 154, 98, .38);
   background: #111;
-  cursor: crosshair;
+}
+
+.painting-viewer {
+  position: absolute;
+  inset: 0;
+}
+
+.painting-viewer canvas {
+  filter: saturate(.86) contrast(1.05) brightness(.72);
+}
+
+.painting-viewer .openseadragon-canvas:focus {
+  outline: 2px solid rgba(240, 217, 156, .72);
+  outline-offset: -2px;
 }
 
 .painting {
@@ -111,7 +124,6 @@ button {
   height: 100%;
   display: block;
   object-fit: cover;
-  object-position: center;
   filter: saturate(.86) contrast(1.05) brightness(.72);
 }
 
@@ -237,28 +249,6 @@ button {
 .skip-notes:hover {
   background: #7f3033;
   transform: translate(-50%, -2px);
-}
-
-.lens {
-  position: absolute;
-  z-index: 5;
-  width: 330px;
-  height: 330px;
-  border-radius: 50%;
-  pointer-events: none;
-  transform: translate(-50%, -50%) scale(.82);
-  opacity: 0;
-  background-repeat: no-repeat;
-  background-size: 330%;
-  border: 3px solid #d4bb84;
-  box-shadow: 0 0 0 7px rgba(0, 0, 0, .68), 0 22px 60px #000, inset 0 0 40px rgba(255, 235, 190, .18);
-  transition: opacity .18s, transform .28s cubic-bezier(.2, .8, .2, 1);
-  filter: brightness(1.22) saturate(1.1);
-}
-
-.lens.visible {
-  opacity: 1;
-  transform: translate(-50%, -50%) scale(1);
 }
 
 .hotspot {
@@ -601,11 +591,6 @@ footer {
     font-size: 26px;
   }
 
-  .lens {
-    width: 230px;
-    height: 230px;
-  }
-
   .category-bar {
     left: 12px;
     right: 12px;
@@ -672,9 +657,6 @@ footer {
     height: 26px;
   }
 
-  .lens {
-    display: none;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
