@@ -496,6 +496,55 @@ footer {
   justify-content: space-between;
 }
 
+.reading-guide {
+  background: #0b0a08;
+  border-top: 1px solid rgba(184, 154, 98, .38);
+  padding: 76px 22px 90px;
+}
+
+.guide-inner {
+  width: min(920px, 100%);
+  margin: 0 auto;
+}
+
+.reading-guide h2 {
+  font: 400 clamp(42px, 6vw, 78px)/.96 Georgia, serif;
+  margin: 12px 0 28px;
+}
+
+.reading-guide h3 {
+  font: 400 30px/1.1 Georgia, serif;
+  color: #f0ddae;
+  margin: 0 0 18px;
+}
+
+.reading-guide p,
+.reading-guide li {
+  font: 18px/1.75 Georgia, "Times New Roman", serif;
+  color: #d2c8b4;
+}
+
+.reading-guide article {
+  border-top: 1px solid rgba(184, 154, 98, .22);
+  margin-top: 34px;
+  padding-top: 30px;
+}
+
+.reading-guide ul {
+  margin: 16px 0 22px;
+  padding-left: 24px;
+}
+
+.reading-guide li::marker {
+  color: var(--gold);
+}
+
+.guide-highlight {
+  background: rgba(184, 154, 98, .08);
+  border: 1px solid rgba(184, 154, 98, .28);
+  padding: 30px;
+}
+
 @media (max-width: 850px) {
   .topbar {
     padding: 0 16px;
@@ -566,6 +615,19 @@ footer {
   .panel-labels,
   footer {
     display: none;
+  }
+
+  .reading-guide {
+    padding: 54px 18px 68px;
+  }
+
+  .reading-guide p,
+  .reading-guide li {
+    font-size: 16px;
+  }
+
+  .reading-guide h3 {
+    font-size: 25px;
   }
 }
 
