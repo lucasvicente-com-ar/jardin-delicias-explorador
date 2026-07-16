@@ -25,24 +25,25 @@
             target="_blank"
             rel="noreferrer"
           ><i>W</i> Wikipedia</a>
-          <a
-            href="https://upload.wikimedia.org/wikipedia/commons/6/62/The_Garden_of_Earthly_Delights_by_Bosch_High_Resolution_2.jpg"
-            target="_blank"
-            rel="noreferrer"
-          ><i>HD</i> Alta definición</a>
+          <a href="hd.html" target="_blank" rel="noreferrer"><i>HD</i> Alta definición</a>
           <button type="button" data-fullscreen><i>[]</i> Pantalla completa</button>
         </nav>
       </header>
 
       <section class="painting-stage" data-stage>
-        <div id="painting-viewer" class="painting-viewer" data-viewer>
-        </div>
+        <img
+          class="painting"
+          src="https://commons.wikimedia.org/wiki/Special:Redirect/file/The_Garden_of_Earthly_Delights_by_Bosch_High_Resolution.jpg?width=2560"
+          alt="El jardín de las delicias, tríptico de El Bosco"
+        >
         <div class="panel-labels" aria-hidden="true">
           <span>Paraíso</span>
           <span>El jardín</span>
           <span>Infierno</span>
         </div>
+        <div class="lens" data-lens></div>
         <div class="hotspots" data-hotspots></div>
+
         <div class="panel-notes" data-panel-notes>
           <article class="panel-note panel-note-left" data-panel-note>
             <button type="button" aria-label="Cerrar texto del panel izquierdo" data-close-note>x</button>
@@ -212,7 +213,6 @@
       </div>
     </section>
 
-    <script src="https://cdn.jsdelivr.net/npm/openseadragon@6.0.2/build/openseadragon/openseadragon.min.js"></script>
     <script src="script.js"></script>
   </body>
 </html>

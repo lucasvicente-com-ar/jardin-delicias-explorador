@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta
+      name="description"
+      content="Visor de alta definición de El jardín de las delicias con zoom y desplazamiento."
+    >
+    <title>Alta definición - El jardín de las delicias</title>
+    <link rel="icon" href="public/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="hd-viewer.css">
+  </head>
+  <body>
+    <main class="hd-shell">
+      <header class="hd-topbar">
+        <a class="back-link" href="index.html">Volver</a>
+        <h1>El jardín de las delicias</h1>
+        <a
+          class="source-link"
+          href="https://upload.wikimedia.org/wikipedia/commons/6/62/The_Garden_of_Earthly_Delights_by_Bosch_High_Resolution_2.jpg"
+          target="_blank"
+          rel="noreferrer"
+        >JPG original</a>
+      </header>
+
+      <section class="hd-viewer-wrap" aria-label="Visor de imagen en alta definición">
+        <div id="hd-viewer" class="hd-viewer"></div>
+        <p class="loading-note" data-loading>Preparando imagen de alta definición...</p>
+      </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/openseadragon@6.0.2/build/openseadragon/openseadragon.min.js"></script>
+    <script src="hd-viewer.js"></script>
+  </body>
+</html>
