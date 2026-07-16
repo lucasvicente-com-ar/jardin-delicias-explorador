@@ -143,40 +143,88 @@ button {
   text-align: right;
 }
 
-.welcome {
+.panel-notes {
   position: absolute;
   z-index: 8;
   inset: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: 25% 50% 25%;
   align-items: center;
-  text-align: center;
-  background: radial-gradient(circle, rgba(0, 0, 0, .08), rgba(0, 0, 0, .4));
-  text-shadow: 0 2px 22px #000;
+  gap: 18px;
+  padding: 64px 26px 104px;
+  background: rgba(0, 0, 0, .18);
 }
 
-.welcome[hidden] {
+.panel-notes[hidden] {
   display: none;
 }
 
-.welcome p {
+.panel-note {
+  position: relative;
+  align-self: center;
+  min-height: 300px;
+  padding: 30px 24px 26px;
+  background: rgba(8, 8, 7, .66);
+  border: 1px solid rgba(212, 187, 132, .46);
+  box-shadow: 0 20px 55px rgba(0, 0, 0, .44);
+  backdrop-filter: blur(5px);
+}
+
+.panel-note-center {
+  width: min(540px, 78%);
+  justify-self: center;
+}
+
+.panel-note-left,
+.panel-note-right {
+  width: min(310px, 96%);
+}
+
+.panel-note-right {
+  justify-self: end;
+}
+
+.panel-note > p:first-of-type {
   text-transform: uppercase;
   letter-spacing: .24em;
   color: #d3c4a5;
   font-size: 11px;
+  margin: 0 0 18px;
 }
 
-.welcome h1 {
-  font: 400 clamp(48px, 7vw, 100px)/.94 Georgia, serif;
-  margin: 15px 0 30px;
+.panel-note h2 {
+  font: 400 clamp(24px, 3vw, 42px)/1 Georgia, "Times New Roman", serif;
+  margin: 0 0 18px;
+  color: #f0ddae;
 }
 
-.welcome button {
+.panel-note p:last-child {
+  margin: 0;
+  color: #e0d4bd;
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.panel-note button {
+  position: absolute;
+  right: 14px;
+  top: 14px;
+  width: 28px;
+  height: 28px;
+  border: 1px solid rgba(212, 187, 132, .5);
+  border-radius: 50%;
+  background: rgba(0, 0, 0, .28);
+  cursor: pointer;
+}
+
+.skip-notes {
+  position: absolute;
+  left: 50%;
+  bottom: 34px;
+  transform: translateX(-50%);
   border: 1px solid #c3a66b;
   background: linear-gradient(135deg, #5a1d24, #7f3033);
-  padding: 18px 32px;
-  min-width: 310px;
+  padding: 15px 26px;
   border-radius: 2px;
   text-transform: uppercase;
   letter-spacing: .14em;
@@ -186,22 +234,9 @@ button {
   transition: .25s;
 }
 
-.welcome button:hover {
-  transform: translateY(-2px);
+.skip-notes:hover {
   background: #7f3033;
-}
-
-.welcome button span {
-  float: right;
-  font-size: 18px;
-  line-height: 12px;
-}
-
-.welcome small {
-  margin-top: 16px;
-  color: #c3baa7;
-  font-size: 10px;
-  letter-spacing: .08em;
+  transform: translate(-50%, -2px);
 }
 
 .lens {
@@ -570,12 +605,23 @@ footer {
     min-height: 500px;
   }
 
-  .welcome h1 {
-    font-size: 52px;
+  .panel-notes {
+    grid-template-columns: 1fr;
+    align-content: start;
+    overflow: auto;
+    padding: 34px 18px 92px;
   }
 
-  .welcome button {
-    min-width: 260px;
+  .panel-note,
+  .panel-note-center,
+  .panel-note-left,
+  .panel-note-right {
+    width: 100%;
+    min-height: auto;
+  }
+
+  .panel-note h2 {
+    font-size: 26px;
   }
 
   .lens {

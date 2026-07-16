@@ -108,7 +108,7 @@ let selectedPoint = null;
 const stage = document.querySelector("[data-stage]");
 const lens = document.querySelector("[data-lens]");
 const hotspots = document.querySelector("[data-hotspots]");
-const welcome = document.querySelector("[data-welcome]");
+const panelNotes = document.querySelector("[data-panel-notes]");
 const categoriesNav = document.querySelector("[data-categories]");
 const detail = document.querySelector("[data-detail]");
 const helpModal = document.querySelector("[data-help-modal]");
@@ -184,14 +184,17 @@ function closeDetail() {
 
 function startExploration() {
   started = true;
-  welcome.hidden = true;
+  panelNotes.hidden = true;
   renderHotspots();
 }
 
 function resetExperience() {
   started = false;
   category = "Todos";
-  welcome.hidden = false;
+  panelNotes.hidden = false;
+  panelNotes.querySelectorAll("[data-panel-note]").forEach((note) => {
+    note.hidden = false;
+  });
   closeDetail();
   renderCategories();
   renderHotspots();
@@ -221,6 +224,11 @@ document.addEventListener("click", (event) => {
   if (target.matches("[data-help]")) helpModal.hidden = false;
   if (target.matches("[data-close-help]")) helpModal.hidden = true;
   if (target.matches("[data-fullscreen]")) document.documentElement.requestFullscreen?.();
+  if (target.matches("[data-close-note]")) {
+    target.closest("[data-panel-note]").hidden = true;
+    const openNotes = panelNotes.querySelectorAll("[data-panel-note]:not([hidden])");
+    if (openNotes.length === 0) startExploration();
+  }
 
   const categoryButton = target.closest("[data-category]");
   if (categoryButton) {
