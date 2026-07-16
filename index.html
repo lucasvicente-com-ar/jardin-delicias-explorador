@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta
+      name="description"
+      content="Explorador visual de detalles historicos de El jardin de las delicias, de Hieronymus Bosch."
+    >
+    <title>El jardin de las delicias - Explorador</title>
+    <link rel="icon" href="public/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="experience">
+      <header class="topbar">
+        <button class="brand" type="button" data-reset>
+          El jardin de las delicias <span>- Explorador</span>
+        </button>
+        <nav aria-label="Herramientas">
+          <button type="button" data-help><i>?</i> Ayuda</button>
+          <a
+            href="https://www.museodelprado.es/coleccion/obra-de-arte/triptico-del-jardin-de-las-delicias/02388242-6d6a-4e9e-a992-e1311eab3609"
+            target="_blank"
+            rel="noreferrer"
+          ><i>+</i> Museo del Prado</a>
+          <button type="button" data-fullscreen><i>[]</i> Pantalla completa</button>
+        </nav>
+      </header>
+
+      <section class="painting-stage" data-stage>
+        <img
+          class="painting"
+          src="https://commons.wikimedia.org/wiki/Special:Redirect/file/The_Garden_of_Earthly_Delights_by_Bosch_High_Resolution.jpg?width=2560"
+          alt="El jardin de las delicias, triptico de El Bosco"
+        >
+        <div class="panel-labels" aria-hidden="true">
+          <span>Paraiso</span>
+          <span>El jardin</span>
+          <span>Infierno</span>
+        </div>
+        <div class="lens" data-lens></div>
+        <div class="hotspots" data-hotspots></div>
+
+        <div class="welcome" data-welcome>
+          <p>Una obra. Tres mundos. Cientos de enigmas.</p>
+          <h1>Entra en el cuadro</h1>
+          <button type="button" data-start>Comenzar exploracion <span>-&gt;</span></button>
+          <small>Move el cursor para ampliar - Elegi un punto para descubrirlo</small>
+        </div>
+
+        <div class="shade"></div>
+      </section>
+
+      <div class="chapter-line">
+        <span>01 - El origen</span>
+        <span>02 - El deseo</span>
+        <span>03 - La consecuencia</span>
+      </div>
+
+      <nav class="category-bar" aria-label="Filtros tematicos" data-categories></nav>
+
+      <aside class="detail" aria-live="polite" data-detail hidden></aside>
+
+      <div class="modal-backdrop" data-help-modal hidden>
+        <section class="help" role="dialog" aria-modal="true" aria-labelledby="help-title">
+          <button class="close" type="button" data-close-help aria-label="Cerrar">×</button>
+          <p class="eyebrow">Como explorar</p>
+          <h2 id="help-title">Mirar antes de interpretar</h2>
+          <ol>
+            <li>Move el cursor sobre la pintura para activar la lente.</li>
+            <li>Filtra los puntos por tema desde la barra inferior.</li>
+            <li>Abri una ficha y distingui entre hechos documentados e interpretaciones.</li>
+          </ol>
+        </section>
+      </div>
+
+      <footer>
+        El Bosco - hacia 1490-1500 - oleo sobre tabla - Museo Nacional del Prado
+        <span>Imagen de dominio publico via Wikimedia Commons</span>
+      </footer>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
